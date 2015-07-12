@@ -1,18 +1,26 @@
-/**
- * Created by Thomas Kleebaum-Nagy on 09.07.2015.
- */
+
 public class Geraeteklasse {
-    int klassenId;
-    String klassenName;
+	
+	private String name;
 
-//    Standardkonstruktor
-    public Geraeteklasse(){
+	
+	public Geraeteklasse(){
+		
+	}
+	
+	public Geraeteklasse(String name) {
+	
+		this.name = name;
+	}
 
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Geraeteklasse(int klassenId, String klassenName){
-        this.klassenId = klassenId;
-        this.klassenName = klassenName;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
 }
+
+

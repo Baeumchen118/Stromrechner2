@@ -3,7 +3,7 @@
  */
 public class Tester {
     public static void main(String args){
-        Geraeteklasse gerae1 = new Geraeteklasse(2504, "Leuchtmittel");
+        Geraeteklasse2 gerae1 = new Geraeteklasse2(2504, "Leuchtmittel");
         System.out.println(gerae1.klassenName);
 
 
