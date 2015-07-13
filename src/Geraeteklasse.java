@@ -15,11 +15,11 @@ public class Geraeteklasse {
 		this.geraeteId = geraeteId;
 	}
 
-	public String getName() {
+	public String getKlasseName() {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setKlasseName(String name) {
 		this.name = name;
 	}
 

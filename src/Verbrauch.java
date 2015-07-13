@@ -4,43 +4,50 @@ import java.util.GregorianCalendar;
  * @author Thomas Kleebaum-Nagy
  *
  */
-public class Verbrauch extends GregorianCalendar{
+public class Verbrauch {
 	
-	private int verbrauch = 0;
-	private GregorianCalendar beginnMessung = null;
-	private GregorianCalendar endeMessung = null;	
-	
-	public  Verbrauch(GregorianCalendar beginnMessung, GregorianCalendar endeMessung) {
-	}
-	
-	public int getVerbrauch() {
-		return verbrauch;
-	}
-	
-	/*public boolean setVerbrauch(int verbrauch) {
-		
-		if (verbrauch > 0){
-			this.verbrauch = verbrauch;
-			return true;
-		}
-		return false;
-		
-	}*/
+	private GregorianCalendar cal1;
+	private GregorianCalendar cal2;
+	private double verbrauch;
 
-	public GregorianCalendar setBeginnMessung() {
-		return beginnMessung;
+
+	// Noarg Konstruktor
+	public Verbrauch(){
+
 	}
 
-	public void getBeginnMessung(GregorianCalendar beginnMessung) {
-		this.beginnMessung = beginnMessung;
-	}
-	
-	public GregorianCalendar setEndeMessung() {
-		return endeMessung;
+	public Verbrauch(int year, int month, int date,	 int hour, int minute) {
+
+		setBeginMessung(year, month, date, hour, minute);
+
+
+	};
+
+	public void setBeginMessung(int year, int month, int date,	 int hour, int minute){
+
+		GregorianCalendar cal1 = new GregorianCalendar(year, month, date, hour,  minute);
+
+	};
+
+	public void setEndeMessung(int year, int month, int date, int hour, int minute){
+
+		GregorianCalendar cla2 = new GregorianCalendar(year, month, date, hour,  minute);
+
+	};
+
+
+	public GregorianCalendar getBeginMessung() {
+		cal1.get
 	}
 
-	public void getEndeMessung(GregorianCalendar endeMessung) {
-		this.beginnMessung = endeMessung;
+	public GregorianCalendar getEndeMessung() {
+
 	}
 
+
+	public double berechneVerbrauch() {
+
+		cal1.
+
+	}
 }
