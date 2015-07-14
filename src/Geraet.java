@@ -8,9 +8,14 @@ public class Geraet {
 
 	// Attribute
 	private String name;
-	private int leistung;
 	private Geraeteklasse klasse;
-	private Verbrauch verbrauch;
+	private GregorianCalendar messungbeginn;
+	private GregorianCalendar messungEnde;
+	private double verbrauch;
+	private double zeitInStunden;
+	private double leistungsaufnahme;
+	public double kwhPreis = 0.0223;
+
 
 
 	// No-Arg-Konstruktor
@@ -20,29 +25,27 @@ public class Geraet {
 
 
 	// Konstruktor
-	public Geraet(String name, int leistung, Geraeteklasse klasse, Verbrauch verbrauch) {
+
+	public Geraet(String name, double leistungsaufnahme, Geraeteklasse klasse) {
 
 		setGeraeteName(name);
 
 		if (getLeistung() > 0){
-			this.leistung = leistung;
+			this.leistungsaufnahme = leistungsaufnahme;
 		}
 
 		this.klasse = klasse;
-		this.verbrauch = verbrauch;
+
 
 	}
 
-	public Geraet(String name, int leistung, String klassenName, int geraeteId, int verbrauch){
+	public Geraet(String name, String klassenName, double leistungsaufnahme){
 
 		setGeraeteName(name);
 
-		if (getLeistung() > 0){
-			this.leistung = leistung;
-		}
+		setGeraeteKlasse(klassenName);
 
-		setGeraeteKlasse(klassenName, geraeteId);
-
+		setLeistung(leistungsaufnahme);
 
 	}
 
@@ -59,16 +62,17 @@ public class Geraet {
 
 	}
 
-	public int getLeistung() {
+	public double getLeistung() {
 
-		return leistung;
+		return leistungsaufnahme;
 
 	}
 
-	public boolean setLeistung(int leistung) {
+	public boolean setLeistung(double leistungsaufnahme) {
 
-		if (leistung > 0){
-			this.leistung = leistung;
+		if (leistungsaufnahme > 0){
+			this.leistungsaufnahme = leistungsaufnahme;
+
 			return true;
 
 		} else {
@@ -81,13 +85,45 @@ public class Geraet {
 		return klasse;
 	}
 
-	public void setGeraeteKlasse(String geraeteName, int geraeteId) {
+	public void setGeraeteKlasse(String geraeteName) {
 
-		this.klasse = new Geraeteklasse(geraeteName, geraeteId);
+		this.klasse = new Geraeteklasse(geraeteName);
 
 	}
 
 
+	public void setBeginMessung(int year, int month, int date,	 int hour, int minute){
 
+		GregorianCalendar cal1 = new GregorianCalendar(year, month, date, hour,  minute);
 
+		this.messungbeginn = cal1;
+
+	};
+
+	public void setEndeMessung(int year, int month, int date, int hour, int minute){
+
+		GregorianCalendar cal2 = new GregorianCalendar(year, month, date, hour,  minute);
+
+		this.messungEnde = cal2;
+
+	}
+
+	public double getZeit(){
+
+		double zeitInStunden = ((messungEnde.getTimeInMillis() - messungbeginn.getTimeInMillis()) / 3600000);
+		return zeitInStunden;
+	}
+
+	public double berechneZeit(){
+
+		zeitInStunden = ((messungEnde.getTimeInMillis() - messungbeginn.getTimeInMillis()) / 3600000);
+
+		return zeitInStunden;
+	}
+
+	public double berechneVerbrauch(){
+
+		verbrauch = Math.round(berechneZeit() * leistungsaufnahme * (kwhPreis ) * 100.0) / 100.0 ;
+		return verbrauch;
+	}
 }
